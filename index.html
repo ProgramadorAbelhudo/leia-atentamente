@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
+
+	<title> Leia! </title>
+
+	<style>
+		.button {
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: rgb(0, 0, 0);
+			color: rgb(255, 255, 255);
+			border: none;
+			text-align: center;
+			text-decoration: none;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+
+        body {
+
+	background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+	color: rgb(0, 0, 0);
+    margin: 0;
+	margin-bottom: 20px;
+	font-family: "Poppins", sans-serif;
+}
+
+#sim {
+  margin-top: 20px;
+}
+
+		#nao {
+			margin-top: 20px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.popup {
+			font-family: "Poppins", sans-serif;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			padding: 20px;
+			background-color: white;
+			box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+			display: none;
+			z-index: 1;
+			text-align: center;
+		}
+
+		.close {
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			cursor: pointer;
+		}
+
+		.close:before {
+			content: "X";
+			font-size: 24px;
+}
+	</style>
+
+</head>
+
+<body>
+    <div class="centralizar">
+
+	<h1>Você, Joaquim, aceita namorar comigo?</h1>
+
+	<div>
+		<button class="button" id="sim" onclick="showPopup()">Sim</button>
+        </div>
+		<button class="button" id="nao" onclick="moveButton()">Não</button>
+	</div>
+
+	<div class="popup" id="popup">
+		<p>Você aceitou kkkk, eu já esperava, agora eu tenho o imenso prazer de lhe chamar de meu amor, meu namorado, e todos os sinônimos existentes!</p>
+		<p>Agora você só precisa clicar no botão abaixo "Enviar mensagem 📞" que vai abrir o WhatsApp direto no meu contato. TO FELIZÃOO🫶🫶</p>
+		<button class="button" id="comecar">Enviar mensagem 📞</button>
+		<div class="close" id="close"></div>
+	</div>
+
+	<script>
+		function moveButton() {
+			const button = document.getElementById('nao');
+			const pageWidth = window.innerWidth;
+			const pageHeight = window.innerHeight;
+
+			const newX = Math.floor(Math.random() * (pageWidth - button.offsetWidth));
+			const newY = Math.floor(Math.random() * (pageHeight - button.offsetHeight));
+
+			button.style.left = newX + 'px';
+			button.style.top = newY + 'px';
+		}
+
+		
+		const simButton = document.getElementById('sim');
+		const popup = document.getElementById('popup');
+		const close = document.getElementById('close');
+		const comecarButton = document.getElementById('comecar');
+
+		simButton.addEventListener('click', () => {
+			popup.style.display = 'block';
+		});
+
+		close.addEventListener('click', () => {
+			popup.style.display = 'none';
+		});
+
+		comecarButton.addEventListener('click', () => {
+			window.open('https://api.whatsapp.com/send?phone=5511933462787&text=Oii%20Cadu,%20eu%20aceitei%20(como%20voc%C3%AA%20t%C3%A1%20vendo).%20Quando%20a%20gente%20vai%20se ver???');
+		});
+	</script>
+
+</body>
+
+</html>
